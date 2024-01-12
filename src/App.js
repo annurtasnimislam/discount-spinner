@@ -3,39 +3,35 @@ import "./App.css";
 
 function App() {
   const [isSpinning, setIsSpinning] = useState(false);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState(
+    Array.from({ length: 8 }, () => Math.floor(Math.random() * 21))
+  );
 
   useEffect(() => {
     if (isSpinning) {
       setTimeout(() => {
-        const randomPercentage = Math.floor(Math.random() * 21); // Adjust the range of percentages as needed
-        setResult(randomPercentage);
         setIsSpinning(false);
       }, 2000);
     }
   }, [isSpinning]);
 
   const startSpinner = () => {
-    setResult(null); // Reset result when starting spinner
+    setResult(Array.from({ length: 8 }, () => Math.floor(Math.random() * 21))); // Reset result to new random percentages when starting spinner
     setIsSpinning(true);
   };
 
   const renderSlices = () => {
-    const slices = [];
-    for (let i = 0; i < 8; i++) {
-      slices.push(
-        <div
-          key={i}
-          className="slice"
-          style={{
-            transform: `rotate(${i * (360 / 8)}deg)`,
-          }}
-        >
-          {isSpinning && <span className="percentage">{result}%</span>}
-        </div>
-      );
-    }
-    return slices;
+    return result.map((percentage, index) => (
+      <div
+        key={index}
+        className="slice"
+        style={{
+          transform: `rotate(${index * (360 / 8)}deg)`,
+        }}
+      >
+        <span className="percentage">{percentage}%</span>
+      </div>
+    ));
   };
 
   return (
@@ -51,7 +47,9 @@ function App() {
           {isSpinning ? "Spinning..." : "Spin the Spinner"}
         </button>
       </div>
-      {result !== null && <p>Result: {result}% discount</p>}
+      {/* {result.length > 0 && !isSpinning && (
+        <p>Result: {result.join(", ")}% discount</p>
+      )} */}
     </div>
   );
 }
