@@ -1,38 +1,85 @@
 .App {
   text-align: center;
+  padding: 50px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.spinner-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.spinner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: conic-gradient(
+    #ff5733 0% 12.5%,
+    #e55128 12.5% 25%,
+    #d74b2e 25% 37.5%,
+    #c24535 37.5% 50%,
+    #b23f3b 50% 62.5%,
+    #a23942 62.5% 75%,
+    #923348 75% 87.5%,
+    #82364e 87.5% 100%
+  );
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.slice {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-radius: 50%;
 }
 
-.App-link {
-  color: #61dafb;
+.slice:nth-child(1) {
+  transform: rotate(0deg);
+}
+.slice:nth-child(2) {
+  transform: rotate(45deg);
+}
+.slice:nth-child(3) {
+  transform: rotate(90deg);
+}
+.slice:nth-child(4) {
+  transform: rotate(135deg);
+}
+.slice:nth-child(5) {
+  transform: rotate(180deg);
+}
+.slice:nth-child(6) {
+  transform: rotate(225deg);
+}
+.slice:nth-child(7) {
+  transform: rotate(270deg);
+}
+.slice:nth-child(8) {
+  transform: rotate(315deg);
 }
 
-@keyframes App-logo-spin {
-  from {
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
+}
+
+.spin {
+  animation: spin 2s linear infinite;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
