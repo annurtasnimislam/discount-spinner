@@ -5,8 +5,8 @@
 
 .spinner-container {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 300px;
+  height: 300px;
   margin: 20px auto;
 }
 
@@ -18,13 +18,13 @@
   overflow: hidden;
   background: conic-gradient(
     #ff5733 0% 12.5%,
-    #e55128 12.5% 25%,
-    #d74b2e 25% 37.5%,
-    #c24535 37.5% 50%,
-    #b23f3b 50% 62.5%,
-    #a23942 62.5% 75%,
-    #923348 75% 87.5%,
-    #82364e 87.5% 100%
+    #4ec1b4 12.5% 25%,
+    #641ca7 25% 37.5%,
+    #33b2d2 37.5% 50%,
+    #c9e803 50% 62.5%,
+    #074126 62.5% 75%,
+    #984e5e 75% 87.5%,
+    #4719c5 87.5% 100%
   );
 }
 
@@ -71,7 +71,7 @@
 }
 
 .spin {
-  animation: spin 2s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 .button-container {

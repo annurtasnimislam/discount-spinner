@@ -11,7 +11,7 @@ function App() {
     if (isSpinning) {
       setTimeout(() => {
         setIsSpinning(false);
-      }, 2000);
+      }, 4000);
     }
   }, [isSpinning]);
 
@@ -20,26 +20,24 @@ function App() {
     setIsSpinning(true);
   };
 
-  const renderSlices = () => {
-    return result.map((percentage, index) => (
-      <div
-        key={index}
-        className="slice"
-        style={{
-          transform: `rotate(${index * (360 / 8)}deg)`,
-        }}
-      >
-        <span className="percentage">{percentage}%</span>
-      </div>
-    ));
-  };
+  console.log("result", result);
 
   return (
     <div className="App">
       <h1>Discount Spinner</h1>
       <div className="spinner-container">
         <div className={`spinner ${isSpinning ? "spin" : ""}`}>
-          {renderSlices()}
+          {result.map((percentage, index) => (
+            <div
+              key={index}
+              className="slice"
+              style={{
+                transform: `rotate(${index * (360 / 8)}deg)`,
+              }}
+            >
+              <span className="percentage">{percentage}%</span>
+            </div>
+          ))}
         </div>
       </div>
       <div className="button-container">
@@ -47,9 +45,7 @@ function App() {
           {isSpinning ? "Spinning..." : "Spin the Spinner"}
         </button>
       </div>
-      {/* {result.length > 0 && !isSpinning && (
-        <p>Result: {result.join(", ")}% discount</p>
-      )} */}
+      {result.length > 0 && !isSpinning && <p>Result: {result[2]}% discount</p>}
     </div>
   );
 }
