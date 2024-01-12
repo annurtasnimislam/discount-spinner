@@ -3,9 +3,7 @@ import "./App.css";
 
 function App() {
   const [isSpinning, setIsSpinning] = useState(false);
-  const [result, setResult] = useState(
-    Array.from({ length: 8 }, () => Math.floor(Math.random() * 21))
-  );
+  const [result, setResult] = useState([20, 10, 30, 40, 50, 60, 70, 80, 0, 90]);
 
   useEffect(() => {
     if (isSpinning) {
@@ -16,11 +14,9 @@ function App() {
   }, [isSpinning]);
 
   const startSpinner = () => {
-    setResult(Array.from({ length: 8 }, () => Math.floor(Math.random() * 21))); // Reset result to new random percentages when starting spinner
+    setResult(Array.from({ length: 10 }, () => Math.floor(Math.random() * 21))); // Reset result to new random percentages when starting spinner
     setIsSpinning(true);
   };
-
-  console.log("result", result);
 
   return (
     <div className="App">
@@ -32,7 +28,7 @@ function App() {
               key={index}
               className="slice"
               style={{
-                transform: `rotate(${index * (360 / 8)}deg)`,
+                transform: `rotate(${index * (360 / 10)}deg)`,
               }}
             >
               <span className="percentage">{percentage}%</span>
