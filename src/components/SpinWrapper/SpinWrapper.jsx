@@ -1,7 +1,7 @@
 import Spinner from "../Spinner/Spinner";
-import classes from "./Wrapper.module.css";
+import classes from "./SpinWrapper.module.css";
 
-export default function Wrapper() {
+export default function SpinWrapper({ name, email, setUserList }) {
   const segments = [
     "10% Discount",
     "20% Discount",
@@ -21,8 +21,15 @@ export default function Wrapper() {
     "#FF9000",
   ];
   const onFinished = (winner) => {
-    console.log(winner);
+    const singleUser = {
+      name: name,
+      email: email,
+      discount: winner,
+    };
+
+    setUserList((prevUserList) => [...prevUserList, singleUser]);
   };
+
   return (
     <div className={classes.wrapper}>
       <div id="wheelCircle">
@@ -41,6 +48,7 @@ export default function Wrapper() {
           downDuration={500}
         />
       </div>
+      <div></div>
     </div>
   );
 }

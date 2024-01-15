@@ -1,3 +1,5 @@
-import Wrapper from "./Wrapper/Wrapper";
+import Login from "./Login/Login";
+import SpinWrapper from "./SpinWrapper/SpinWrapper";
+import UserTable from "./UserTable/UserTable";
 
-export { Wrapper };
+export { Login, SpinWrapper, UserTable };
