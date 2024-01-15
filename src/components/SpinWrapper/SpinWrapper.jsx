@@ -1,25 +1,14 @@
+import { useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import classes from "./SpinWrapper.module.css";
 
-export default function SpinWrapper({ name, email, setUserList }) {
-  const segments = [
-    "10% Discount",
-    "20% Discount",
-    "50% Discount",
-    "30% Discount",
-    "5% Discount",
-    "No Discount",
-  ];
-  const segColors = [
-    "#EE4040",
-    "#F0CF50",
-    "#815CD1",
-    "#3DA5E0",
-    "#34A24F",
-    // "#F9AA1F",
-    // "#EC3F3F",
-    "#FF9000",
-  ];
+export default function SpinWrapper({
+  name,
+  email,
+  setUserList,
+  segments,
+  segColors,
+}) {
   const onFinished = (winner) => {
     const singleUser = {
       name: name,

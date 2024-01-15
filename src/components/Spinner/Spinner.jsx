@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function Spinner({
+const Spinner = ({
   segments,
   segColors,
   winningSegment,
@@ -18,7 +18,7 @@ export default function Spinner({
   fontFamily = "proxima-nova",
   width = 100,
   height = 100,
-}) {
+}) => {
   let currentSegment = "";
   let isStarted = false;
   const [isFinished, setFinished] = useState(false);
@@ -229,4 +229,5 @@ export default function Spinner({
       />
     </div>
   );
-}
+};
+export default Spinner;
