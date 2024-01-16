@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Login from "../Login/Login";
 
 const Spinner = ({
   segments,
   segColors,
   winningSegment,
   onFinished,
-  onRotate,
-  onRotatefinish,
   primaryColor,
   primaryColoraround,
   contrastColor,
@@ -34,12 +33,14 @@ const Spinner = ({
   let frames = 0;
   const centerX = 300;
   const centerY = 300;
+
   useEffect(() => {
     wheelInit();
     setTimeout(() => {
       window.scrollTo(0, 1);
     }, 0);
-  }, []);
+  }, [segColors, segments]);
+
   const wheelInit = () => {
     initCanvas();
     wheelDraw();
@@ -54,27 +55,26 @@ const Spinner = ({
       canvas.setAttribute("id", "canvas");
       document.getElementById("wheel").appendChild(canvas);
     }
-    canvas.addEventListener("click", spin, false);
     canvasContext = canvas.getContext("2d");
   };
 
   const spin = () => {
-    isStarted = true;
-    // onRotate();
-    if (timerHandle === 0) {
+    if (!isStarted) {
+      isStarted = true;
       spinStart = new Date().getTime();
-      // maxSpeed = Math.PI / ((segments.length*2) + Math.random())
       maxSpeed = Math.PI / segments.length;
       frames = 0;
       timerHandle = setInterval(onTimerTick, timerDelay);
     }
   };
+
   const onTimerTick = () => {
     frames++;
     draw();
     const duration = new Date().getTime() - spinStart;
     let progress = 0;
     let finished = false;
+
     if (duration < upTime) {
       progress = duration / upTime;
       angleDelta = maxSpeed * Math.sin((progress * Math.PI) / 2);
@@ -217,16 +217,24 @@ const Spinner = ({
     const ctx = canvasContext;
     ctx.clearRect(0, 0, 1000, 800);
   };
+
+  const handleLuck = () => {
+    spin();
+  };
+
   return (
-    <div id="wheel">
-      <canvas
-        id="canvas"
-        width="600"
-        height="600"
-        style={{
-          pointerEvents: isFinished && isOnlyOnce ? "none" : "auto",
-        }}
-      />
+    <div>
+      <div id="wheel">
+        <canvas
+          id="canvas"
+          width="600"
+          height="600"
+          style={{
+            pointerEvents: isFinished && isOnlyOnce ? "none" : "auto",
+          }}
+        />
+      </div>
+      <Login onLogin={handleLuck} />
     </div>
   );
 };

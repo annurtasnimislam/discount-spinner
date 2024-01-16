@@ -5,7 +5,6 @@ export default function UserTable({
   setEmail,
 }) {
   const handleHideSpin = () => {
-    setShowSpin(false);
     setName("");
     setEmail("");
   };
@@ -30,8 +29,6 @@ export default function UserTable({
           ))}
         </tbody>
       </table>
-
-      <button onClick={handleHideSpin}>Sign In</button>
     </div>
   );
 }

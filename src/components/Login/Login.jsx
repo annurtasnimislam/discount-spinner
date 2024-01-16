@@ -1,7 +1,12 @@
-export default function Login(props) {
+import React, { useState } from "react";
+
+export default function Login({ onLogin }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
   const handleLogin = (e) => {
     e.preventDefault();
-    props.setShowSpin(true);
+    onLogin();
   };
 
   return (
@@ -12,8 +17,8 @@ export default function Login(props) {
           Name:
           <input
             type="text"
-            value={props.name}
-            onChange={(e) => props.setName(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </label>
@@ -22,8 +27,8 @@ export default function Login(props) {
           Email:
           <input
             type="email"
-            value={props.email}
-            onChange={(e) => props.setEmail(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
