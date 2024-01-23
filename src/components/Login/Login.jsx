@@ -7,6 +7,8 @@ export default function Login({ onLogin }) {
   const handleLogin = (e) => {
     e.preventDefault();
     onLogin();
+    setName("");
+    setEmail("");
   };
 
   return (
